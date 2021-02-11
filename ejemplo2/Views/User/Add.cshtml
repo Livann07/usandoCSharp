@@ -1,0 +1,39 @@
+﻿@model ejemplo2.Models.ViewModels.UserViewModel
+@{
+    ViewBag.Title = "Agregar Usuario";
+}
+<h2>@ViewBag.Title</h2>
+
+    <div class="row">
+        <div class="col-lg-12">
+            @using(Html.BeginForm("Add","User",FormMethod.Post,new { role = "form",@class = "" })) {
+                //Atributo de seguridad helper - no te hagan peticiones de fuera
+                @Html.AntiForgeryToken()
+                @Html.ValidationMessage("error",new { @class = "text-danger" })
+
+                @Html.LabelFor(a => a.Email)
+                @Html.TextBoxFor(a => a.Email,new { @class = "form-control" })
+                @Html.ValidationMessage("Email",new { @class = "text-danger" })<br />
+
+                @Html.LabelFor(a => a.Password)
+                @Html.PasswordFor(a => a.Password,new { @class = "form-control" })
+                @Html.ValidationMessage("Password",new { @class = "text-danger" })<br />
+
+                @Html.LabelFor(a => a.ConfirmPassword)
+                @Html.PasswordFor(a => a.ConfirmPassword,new { @class = "form-control" })
+                @Html.ValidationMessage("ConfirmPassword",new { @class = "text-danger" })<br />
+
+                @Html.LabelFor(a => a.Edad)
+                @Html.TextBoxFor(a => a.Edad,new { @class = "form-control" })
+                @Html.ValidationMessage("Edad",new { @class = "text-danger" })
+
+                <div class="text-right">
+                    <input type="submit" class="btn btn-success" value="Guardar" />
+                </div>
+            }
+        </div>
+
+    </div>
+
+
+
